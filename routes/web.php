@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('browse');
-});
+
+Route::get('/', 'TodoAppController@index');
+
+Route::get('/create', 'TodoAppController@create');
+
+Route::post('/create', 'TodoAppController@store');

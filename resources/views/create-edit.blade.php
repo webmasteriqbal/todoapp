@@ -18,34 +18,29 @@
     <div class="container" style="margin-top: 100px;">
         <div class="card">
             <div class="card-body">
-                <div class="card-title h2 text-center">Todo App</div>
-
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Content</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>11:00 pm Metting</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore error sapiente beatae
-                                nihil in
-                                nam a ipsum, illum quaerat corporis iusto! Harum incidunt perferendis laborum aspernatur
-                                a
-                                voluptatem, ullam accusamus?</td>
-                            <td>
-                                <a href="" class="btn btn-success mb-2">View</a>
-                                <a href="" class="btn btn-primary mb-2">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card-title h2 text-center"> Create Todo App</div>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <form class="text-capitalize" action="/create" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="title">title</label>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">content</label>
+                        <textarea class="form-control" name="content" id="content" cols="30" rows="10"
+                            placeholder="Enter Content"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
             </div>
         </div>
     </div>
